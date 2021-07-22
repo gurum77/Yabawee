@@ -1,0 +1,138 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/LobbyFont.tres" type="DynamicFont" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Searching"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "Searching for servers", "Searching for servers.", "Searching for servers..", "Searching for servers..." ]
+}
+
+[node name="ServerBrowser" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 100.0
+margin_right = -50.0
+margin_bottom = -50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ManualSetup" type="Button" parent="BackgroundPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -224.0
+margin_top = -80.0
+margin_right = -24.0
+margin_bottom = -35.0
+custom_fonts/font = ExtResource( 1 )
+text = "Manual Setup"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GoBack" type="Button" parent="BackgroundPanel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -80.0
+margin_right = 220.0
+margin_bottom = -35.0
+custom_fonts/font = ExtResource( 1 )
+text = "Go Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SeverIPTextEdit" type="LineEdit" parent="BackgroundPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -199.0
+margin_top = -125.0
+margin_right = 201.0
+margin_bottom = -83.0
+custom_fonts/font = ExtResource( 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TypeInServerIP" type="Label" parent="BackgroundPanel/SeverIPTextEdit"]
+anchor_right = 1.0
+margin_top = -38.0
+margin_bottom = -2.0
+custom_fonts/font = ExtResource( 1 )
+text = "Type in server ip"
+align = 1
+valign = 1
+
+[node name="JoinServer" type="Button" parent="BackgroundPanel/SeverIPTextEdit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = 39.0
+margin_right = 100.0
+margin_bottom = 84.0
+custom_fonts/font = ExtResource( 1 )
+text = "Join Server"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackgroundPanel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 30.0
+margin_right = -40.0
+margin_bottom = -120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SearchingForServers" type="Label" parent="BackgroundPanel/VBoxContainer"]
+margin_right = 844.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 1 )
+text = "Searching for servers"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundPanel/VBoxContainer/SearchingForServers"]
+autoplay = "Searching"
+playback_speed = 0.5
+anims/Searching = SubResource( 1 )
+
+[node name="ServerBrowserLabel" type="Label" parent="BackgroundPanel"]
+anchor_right = 1.0
+margin_top = -50.0
+margin_bottom = -18.0
+custom_fonts/font = ExtResource( 1 )
+text = "Server Browser"
+align = 1
