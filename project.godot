@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 Globals="*res://scenes/Globals.gd"
 Network="*res://scenes/Network.gd"
 Players="*res://scenes/Players.tscn"
+StaticData="*res://scenes/StaticData.gd"
 
 [input]
 

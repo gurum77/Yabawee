@@ -2,6 +2,7 @@ extends Control
 
 var player = load('res://scenes/Player.tscn')
 onready var main_ui = $MainUI
+onready var in_game = $InGame
 onready var server_ip_address = $MainUI/ServerIPAddress
 onready var device_ip_address = $CanvasLayer/DeviceIPAddress
 
@@ -12,10 +13,14 @@ func _ready():
 	get_tree().connect('connected_to_server', self, '_connected_to_server')
 
 	device_ip_address.text = Network.ip_address
+	main_ui.show()
+	in_game.hide()
 
 # hosting을 시작함.
 func _on_ButtonHost_pressed():
 	main_ui.hide()
+	in_game.show()
+	in_game.start()
 	Network.create_server()
 	
 	instance_player(get_tree().get_network_unique_id())
@@ -27,6 +32,8 @@ func _connected_to_server():
 func _on_ButtonJoin_pressed():
 	if server_ip_address.text != '':
 		main_ui.hide()
+		in_game.show()
+		in_game.start()
 		Network.ip_address = server_ip_address.text
 		Network.join_server()
 	
